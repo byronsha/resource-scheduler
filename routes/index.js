@@ -7,7 +7,7 @@ var connectionString = require(path.join(__dirname, '../', 'config'));
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-		title: 'Express'
+		title: 'Resource App'
 	});
 });
 
@@ -37,7 +37,7 @@ router.post('/api/v1/todos', function(req, res) {
 			return res.json(results);
 		})
 	})
-}); 
+});
 
 // READ action:
 router.get('/api/v1/todos', function(req, res) {
