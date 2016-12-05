@@ -8,10 +8,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import AuthService from './utils/AuthService';
-import Main from './components/main';
-import Foo from './components/foo';
-import Bar from './components/bar';
 import Login from './components/Login';
+import Logout from './components/Logout';
+import AppHome from './components/AppHome';
+import Dashboard from './components/Dashboard';
+
 import reducers from './redux/reducers';
 
 const logger = createLogger({collapsed: true});
@@ -30,10 +31,11 @@ const requireAuth = (nextState, replace) => {
 ReactDOM.render((
 	<Provider store={store}>
 		<Router history={history}>
-			<Route path='/' component={Main} auth={auth}>
-				<Route path="/foo" component={Foo} onEnter={requireAuth}/>
-				<Route path="/bar" component={Bar}/>
-				<Route path="/login" component={Login}/>
+			<Route path='/' component={AppHome} auth={auth}>
+				<IndexRedirect to="/dashboard" />
+				<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
+				<Route path="/login" component={Login} />
+				<Route path="/logout" component={Logout} />
 			</Route>
 		</Router>
 	</Provider>

@@ -5,6 +5,12 @@ export default class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
+      theme: {
+        logo: 'http://orig07.deviantart.net/7685/f/2013/248/6/5/tinker_icon_by_imkb-d6l50q2.png'
+      },
+        languageDictionary: {
+        title: 'I\'m just tinkering about!'
+      },
       auth: {
         redirectUrl: 'http://localhost:8080/login',
         responseType: 'token'
@@ -20,12 +26,12 @@ export default class AuthService {
     // Saves the user token
     this.setToken(authResult.idToken)
     // navigate to the home route
-    browserHistory.replace('/home')
+    browserHistory.replace('/')
   }
 
   login() {
     // Call the show method to display the widget.
-    this.lock.show()
+    this.lock.show();
   }
 
   loggedIn() {
@@ -46,5 +52,7 @@ export default class AuthService {
   logout() {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
+    // navigate to the login page
+    browserHistory.replace('/login');
   }
 }
