@@ -10,9 +10,10 @@ export default class MainNav extends Component {
     };
 
     const { auth } = this.props;
+    const logoUrl = 'http://orig07.deviantart.net/7685/f/2013/248/6/5/tinker_icon_by_imkb-d6l50q2.png';
     return (
       <Menu stackable style={style}>
-        <Menu.Item header>Just tinkering about!</Menu.Item>
+        <Menu.Item name='logo' fitted='vertically' header><img src={logoUrl}></img> Just tinkering about!</Menu.Item>
         <Menu.Item name='one' as='a'>One</Menu.Item>
         <Menu.Item name='two' as='a'>Two</Menu.Item>
         <Menu.Item name='three' as='a'>Three</Menu.Item>
