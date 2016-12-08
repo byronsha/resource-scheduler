@@ -25,8 +25,8 @@ module.exports = {
 	plugins: [
     new webpack.DefinePlugin({
       'process.env':{
-        'AUTH0_CLIENT_ID': JSON.stringify('NjWTftEdyJcYGDoMujyLZeeDwfcMvJPH'),
-        'AUTH0_DOMAIN': JSON.stringify('byronsha.auth0.com')
+        'AUTH0_CLIENT_ID': JSON.stringify('Your Auth0 Client ID'),
+        'AUTH0_DOMAIN': JSON.stringify('Your Auth0 Domain')
       }
     })
 	]

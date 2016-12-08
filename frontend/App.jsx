@@ -21,7 +21,7 @@ const createStoreWithMiddleware = applyMiddleware(promise, logger)(createStore);
 const store = createStoreWithMiddleware(reducers);
 const history = syncHistoryWithStore(browserHistory, store);
 
-const auth = new AuthService('NjWTftEdyJcYGDoMujyLZeeDwfcMvJPH', 'byronsha.auth0.com');
+const auth = new AuthService(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN);
 const requireAuth = (nextState, replace) => {
 	if (!auth.loggedIn()) {
 		replace({ pathname: '/login' })

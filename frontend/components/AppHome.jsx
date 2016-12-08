@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 
 export default class AppHome extends Component {
 	render() {
 		return (
-			<div>
+			<Container fluid>
 				{this.props.children}
-			</div>
-		)
+			</Container>
+		);
 	}
 }
