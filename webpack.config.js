@@ -1,6 +1,6 @@
 module.exports = {
 	entry: {
-		reactredux: './frontend/main.js'
+		reactredux: './frontend/App.jsx'
 	},
 	output: {
 		filename: './public/javascripts/bundle.js'
@@ -8,7 +8,7 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				loader: 'babel',
 				exclude: /node_modules/,
 				query: {
@@ -16,5 +16,8 @@ module.exports = {
 				}
 			}
 		]
+	},
+	resolve: {
+		extensions: ['', '.js', '.jsx']
 	}
 };
