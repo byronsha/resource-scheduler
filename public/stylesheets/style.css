@@ -1,30 +1,9 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+#user-info img {
+  height: 30px;
+  border-radius: 50%;
 }
-
-a {
-  color: #00B7FF;
+#user-info span {
+  position: relative;
+  bottom: 9px;
+  padding: 0px 0px 0px 5px;
 }
-
-.delete-btn {
-	margin-left: 10px;
-}
-
-.new-todo:hover {
-	background-color: #ADD8E6;
-	font-weight: bold;
-	cursor: pointer;
-}
-
-.form-control.todoInput {
-	width: 40%;
-}
-
-.todo-item {
-	max-width: 700px;
-}
-
-.empty-todo {
-	text-align: center;
-}*/

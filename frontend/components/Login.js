@@ -1,7 +1,7 @@
-import React, { PropTypes as T } from 'react'
+import React, { Component, PropTypes as T } from 'react'
 import AuthService from '../utils/AuthService'
 
-export default class Login extends React.Component {
+export default class Login extends Component {
   static get propTypes() {
     return {
       location: T.object,
