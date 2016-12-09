@@ -8,7 +8,7 @@ export default class Main extends Component {
 		return (
 			<div>
 				<MainNav auth={auth} />
-				<h1>To do list app</h1>
+				<h1>To do list app...</h1>
 				<TodoList />
 			</div>
 		);
