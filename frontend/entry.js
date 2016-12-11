@@ -34,9 +34,9 @@ ReactDOM.render((
 			<Route path='/' component={AppHome} auth={auth}>
 				<IndexRedirect to="/dashboard" />
 				<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
-				<Route path="/login" component={Login} />
-				<Route path="/logout" component={Logout} />
 			</Route>
+			<Route path="/login" component={Login} auth={auth} />
+			<Route path="/logout" component={Logout} auth={auth} />
 		</Router>
 	</Provider>
 ), document.getElementById('app'));
