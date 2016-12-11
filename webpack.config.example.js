@@ -1,11 +1,14 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-	entry: {
-		reactredux: './frontend/App.jsx'
-	},
-	output: {
-		filename: './public/javascripts/bundle.js'
+	entry: [
+		'./frontend/entry.js'
+	],
+	output:{
+			filename: 'bundle.js',
+			path: path.resolve(__dirname, 'public'),
+			publicPath: "http://localhost:9090/public/"
 	},
 	module: {
 		loaders: [
@@ -23,11 +26,11 @@ module.exports = {
 		extensions: ['', '.js', '.jsx']
 	},
 	plugins: [
-    new webpack.DefinePlugin({
-      'process.env':{
-        'AUTH0_CLIENT_ID': JSON.stringify('Your Auth0 Client ID'),
-        'AUTH0_DOMAIN': JSON.stringify('Your Auth0 Domain')
-      }
-    })
+		new webpack.DefinePlugin({
+			'process.env':{
+				'AUTH0_CLIENT_ID': JSON.stringify('Your Auth0 Client ID'),
+				'AUTH0_DOMAIN': JSON.stringify('Your Auth0 Domain')
+			}
+		})
 	]
 };

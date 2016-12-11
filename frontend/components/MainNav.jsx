@@ -15,7 +15,7 @@ export default class MainNav extends Component {
       <Menu stackable style={style}>
         <Menu.Item name='logo' fitted='vertically' header><img src={logoUrl}></img> Just tinkering about!</Menu.Item>
         <Menu.Item name='one' as='a'>One</Menu.Item>
-        <Menu.Item name='two' as='a'>Two</Menu.Item>
+        <Menu.Item name='two' as='a'>Twoaabc</Menu.Item>
         <Menu.Item name='three' as='a'>Three</Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item name='userInfo' fitted='vertically'>

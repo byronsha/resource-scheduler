@@ -10,7 +10,7 @@ var routes = require('./routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -26,7 +26,6 @@ app.use(express.static(root));
 app.use('/', routes);
 
 app.get('*', function (req, res){
-  res.render(path.resolve(__dirname, 'views', 'index.jade'))
 })
 
 // catch 404 and forward to error handler
