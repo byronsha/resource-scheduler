@@ -26,6 +26,7 @@ app.use(express.static(root));
 app.use('/', routes);
 
 app.get('*', function (req, res){
+  res.render(path.resolve(__dirname, 'public', 'index.jade'))
 })
 
 // catch 404 and forward to error handler
