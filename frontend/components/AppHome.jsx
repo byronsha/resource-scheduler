@@ -5,15 +5,16 @@ import MainMenu from './MainMenu';
 export default class AppHome extends Component {
 	render() {
 		const menuWrapperStyle = {
-			borderRadius: '0',
-			minHeight: '100vh',
+			position: 'absolute',
 			width: '250px',
-			position: 'absolute'
+			minHeight: '100vh',
+			borderRadius: '0px'
 		}
 
 		const contentWrapperStyle = {
+			position: 'absolute',
 			marginLeft: '250px',
-			position: 'absolute'
+			padding: '10px'
 		}
 
 		return (

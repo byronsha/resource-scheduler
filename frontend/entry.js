@@ -9,7 +9,6 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import AuthService from './utils/AuthService';
 import Login from './components/Login';
-import Logout from './components/Logout';
 import AppHome from './components/AppHome';
 import Dashboard from './components/Dashboard';
 
@@ -36,7 +35,6 @@ ReactDOM.render((
 				<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
 			</Route>
 			<Route path="/login" component={Login} auth={auth} />
-			<Route path="/logout" component={Logout} auth={auth} />
 		</Router>
 	</Provider>
 ), document.getElementById('app'));

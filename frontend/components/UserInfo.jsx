@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
-import { Menu, Image } from 'semantic-ui-react';
-import { Link } from 'react-router';
+import { Menu, Image, Icon } from 'semantic-ui-react';
+import LogoutButton from './LogoutButton';
 
 export default class UserInfo extends Component {
 	render() {
@@ -14,16 +14,14 @@ export default class UserInfo extends Component {
 				marginLeft: '5px',
 				fontWeight: 'bold'
 			},
-			emailAndLogout: {
+			email: {
 				fontSize: '12px',
 				paddingTop: '10px'
-			},
-			logout: {
-				float: 'right',
 			}
 		}
 
-		const profile = this.props.auth.getProfile();
+		const auth = this.props.auth;
+		const profile = auth.getProfile();
 
 		return (
 			<Menu.Item style={styles.menuItem}>
@@ -31,9 +29,9 @@ export default class UserInfo extends Component {
 					<Image src={profile.picture} avatar />
 					<span style={styles.name}>{profile.name}</span>
 				</div>
-				<div style={styles.emailAndLogout}>
+				<div style={styles.email}>
 					<span>{profile.email}</span>
-					<span style={styles.logout}><Link to='/logout'>Logout</Link></span>
+					<LogoutButton auth={auth} />
 				</div>
 			</Menu.Item>
 		);
