@@ -24,9 +24,9 @@ router.post('/api/v1/todos', function(req, res) {
 			return res.status(500).json({ success: false, data: err });
 		}
 
-		client.query("INSERT INTO items(text, complete) values($1, $2)", [data.text, data.complete]);
+		client.query("INSERT INTO todos(text, complete) values($1, $2)", [data.text, data.complete]);
 
-		var query = client.query('SELECT * FROM items ORDER BY id ASC;');
+		var query = client.query('SELECT * FROM todos ORDER BY id ASC;');
 
 		query.on('row', function(row) {
 			results.push(row);
@@ -50,7 +50,7 @@ router.get('/api/v1/todos', function(req, res) {
 			return res.status(500).json({ success: false, data: err });
 		}
 
-		var query = client.query('SELECT * FROM items ORDER BY id ASC;');
+		var query = client.query('SELECT * FROM todos ORDER BY id ASC;');
 
 		query.on('row', function(row) {
 			results.push(row);
@@ -79,10 +79,10 @@ router.put('/api/v1/todos/:todo_id', function(req, res) {
 			return res.status(500).json({ success: false, data: err });
 		}
 
-		client.query("UPDATE items SET text=($1), complete=($2) WHERE id=($3)",
+		client.query("UPDATE todos SET text=($1), complete=($2) WHERE id=($3)",
 			[data.text, data.complete, id]);
 
-		var query = client.query("SELECT * FROM items ORDER BY id ASC;");
+		var query = client.query("SELECT * FROM todos ORDER BY id ASC;");
 
 		query.on('row', function(row) {
 			results.push(row);
@@ -109,9 +109,9 @@ router.delete('/api/v1/todos/:todo_id', function(req, res) {
 			return res.status(500).json({ success: false, data: err });
 		}
 
-		client.query('DELETE FROM items WHERE id=($1);', [id]);
+		client.query('DELETE FROM todos WHERE id=($1);', [id]);
 
-		var query = client.query('SELECT * FROM items ORDER BY id ASC;');
+		var query = client.query('SELECT * FROM todos ORDER BY id ASC;');
 
 		query.on('row', function(row) {
 			results.push(row);

@@ -3,7 +3,7 @@ import {
 	UPDATE_ITEM,
 	DELETE_ITEM,
 	ADD_ITEM
-} from '../actions/todo';
+} from '../actions/todos';
 
 const INITIAL_STATE = [];
 

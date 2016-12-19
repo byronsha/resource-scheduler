@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var todos = require('./routes/todos');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -23,7 +24,8 @@ app.use(cookieParser());
 var root = path.join(__dirname, 'public');
 app.use(express.static(root));
 
-app.use('/', routes);
+app.use('/todos', todos);
+app.use('/users', users);
 
 app.get('*', function (req, res){
   res.render(path.resolve(__dirname, 'public', 'index.jade'))

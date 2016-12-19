@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
+import axios from 'axios';
 
 export default class AuthService {
   constructor(clientId, domain) {
@@ -22,6 +23,7 @@ export default class AuthService {
     // binds login functions to keep this context
     this.login = this.login.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.addUser = this.addUser.bind(this);
   }
 
   _doAuthentication(authResult) {
@@ -34,7 +36,9 @@ export default class AuthService {
       if (error) {
         console.log('Error loading the Profile', error);
       } else {
+        // console.log(profile);
         this.setProfile(profile);
+        this.addUser(profile);
       }
     })
   }
@@ -67,5 +71,19 @@ export default class AuthService {
 
   getToken() {
     return localStorage.getItem('id_token');
+  }
+
+  addUser(profile) {
+    console.log(profile);
+    
+  	axios.post(`/users/api/v1/users`, profile)
+      .then((response) => {
+        console.log(response);
+        console.log('success');
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log('error');
+      });
   }
 }

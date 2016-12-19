@@ -1,1 +1,1 @@
-module.exports = process.env.DATABASE_URL || 'postgres://postgres:cheese@localhost:5432/todo';
+module.exports = process.env.DATABASE_URL || 'postgres://postgres:cheese@localhost:5432/resourceapp';

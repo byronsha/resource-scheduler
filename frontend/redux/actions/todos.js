@@ -6,7 +6,7 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_ITEM = 'ADD_ITEM'
 
 export function fetchItems() {
-	const request = axios.get('/api/v1/todos');
+	const request = axios.get(`/todos/api/v1/todos`);
 
 	return {
 		type: FETCH_ITEMS,
@@ -15,7 +15,7 @@ export function fetchItems() {
 }
 
 export function updateItem(item) {
-	const request = axios.put(`/api/v1/todos/${item.id}`, item);
+	const request = axios.put(`/todos/api/v1/todos/${item.id}`, item);
 
 	return {
 		type: UPDATE_ITEM,
@@ -24,7 +24,7 @@ export function updateItem(item) {
 }
 
 export function deleteItem(itemId) {
-	const request = axios.delete(`/api/v1/todos/${itemId}`);
+	const request = axios.delete(`/todos/api/v1/todos/${itemId}`);
 
 	return {
 		type: DELETE_ITEM,
@@ -33,8 +33,7 @@ export function deleteItem(itemId) {
 }
 
 export function addItem(todo) {
-	console.log("Action jackson time")
-	const request = axios.post(`/api/v1/todos`, todo);
+	const request = axios.post(`/todos/api/v1/todos`, todo);
 
 	return {
 		type: ADD_ITEM,

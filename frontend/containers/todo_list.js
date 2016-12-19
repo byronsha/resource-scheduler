@@ -6,7 +6,7 @@ import {
 	updateItem,
 	deleteItem,
 	addItem
-} from '../redux/actions/todo';
+} from '../redux/actions/todos';
 import TodoItem from '../components/todo_item'
 import NewTodo from '../components/new_todo';
 
