@@ -37,7 +37,7 @@ router.post('/api/v1/users', function(req, res) {
 		}
 
     var sql =
-      'INSERT INTO users('
+      'INSERT INTO users ('
       + 'email,'
       + 'name,'
       + 'nickname,'
@@ -50,7 +50,10 @@ router.post('/api/v1/users', function(req, res) {
       + 'date_created,'
       + 'date_updated'
       + ')'
-      + 'values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)';
+      + 'SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11'
+      + 'WHERE NOT EXISTS ('
+      + 'SELECT id FROM users WHERE auth0_id=($12)'
+      + ');';
 
 		client.query(sql,
       [
@@ -64,11 +67,12 @@ router.post('/api/v1/users', function(req, res) {
         data.picture,
         data.auth0_id,
         data.date_created,
-        data.date_updated
+        data.date_updated,
+        data.auth0_id
       ]
     );
 
-		var query = client.query('SELECT * FROM users ORDER BY id ASC;');
+		var query = client.query('SELECT * FROM users WHERE auth0_id=($1);', [data.auth0_id]);
 
 		query.on('row', function(row) {
 			results.push(row);

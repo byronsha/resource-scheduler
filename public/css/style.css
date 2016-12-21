@@ -1,0 +1,6 @@
+@media only screen and (max-width: 767px) {
+  #content-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

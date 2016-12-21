@@ -5,9 +5,7 @@ import {
 	ADD_ITEM
 } from '../actions/todos';
 
-const INITIAL_STATE = [];
-
-export default function(state = INITIAL_STATE, action) {
+export default function(state = [], action) {
 	switch(action.type) {
 	case FETCH_ITEMS:
 		return action.payload.data;

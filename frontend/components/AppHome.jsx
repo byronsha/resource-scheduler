@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Container, Grid } from 'semantic-ui-react';
 import MainMenu from './MainMenu';
 
@@ -14,7 +15,9 @@ export default class AppHome extends Component {
 		const contentWrapperStyle = {
 			position: 'absolute',
 			marginLeft: '250px',
-			padding: '10px'
+			width: 'calc(100vw - 250px)',
+			maxHeight: '100vh',
+			overflowY: 'auto'
 		}
 
 		return (
@@ -23,7 +26,7 @@ export default class AppHome extends Component {
 					<MainMenu {...this.props} />
 				</div>
 				<div style={contentWrapperStyle}>
-					<Container fluid>
+					<Container fluid id='content-container'>
 						{this.props.children}
 					</Container>
 				</div>

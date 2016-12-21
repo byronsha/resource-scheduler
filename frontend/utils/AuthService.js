@@ -23,20 +23,18 @@ export default class AuthService {
     // binds login functions to keep this context
     this.login = this.login.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.getPgProfile = this.getPgProfile.bind(this);
     this.addUser = this.addUser.bind(this);
   }
 
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken);
-    // navigate to the home route
-    browserHistory.replace('/dashboard');
 
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
         console.log('Error loading the Profile', error);
       } else {
-        // console.log(profile);
         this.setProfile(profile);
         this.addUser(profile);
       }
@@ -49,6 +47,8 @@ export default class AuthService {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('pg_profile');
     browserHistory.replace('/login');
   }
 
@@ -65,6 +65,11 @@ export default class AuthService {
     return profile ? JSON.parse(localStorage.profile) : {};
   }
 
+  getPgProfile() {
+    const profile = localStorage.getItem('pg_profile');
+    return profile ? JSON.parse(localStorage.pg_profile) : {};
+  }
+
   setToken(idToken) {
     localStorage.setItem('id_token', idToken);
   }
@@ -74,16 +79,15 @@ export default class AuthService {
   }
 
   addUser(profile) {
-    console.log(profile);
-    
   	axios.post(`/users/api/v1/users`, profile)
       .then((response) => {
-        console.log(response);
-        console.log('success');
+        localStorage.setItem('pg_profile', JSON.stringify(response.data[0]));
+        // navigate to the home route
+        browserHistory.replace('/dashboard');
+        console.log('Successfully logged in!');
       })
       .catch((error) => {
-        console.log(error);
-        console.log('error');
+        console.log('Error! Something went wrong!', error);
       });
   }
 }

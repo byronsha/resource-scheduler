@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
 	fetchItems,
 	updateItem,
@@ -37,12 +37,17 @@ export class TodoList extends Component {
 
 	render() {
 		return (
-			<ul className='list-group'>
+			<Card color='teal' fluid>
+				<Card.Content>
+					<Card.Header>
+						My todos
+					</Card.Header>
+				</Card.Content>
 				{this.renderItems()}
 				<NewTodo
 					addTodo={this.addTodo.bind(this)}
 				/>
-			</ul>
+			</Card>
 		);
 	}
 
@@ -74,21 +79,19 @@ export class TodoList extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		todos: state.todos
-	}
-}
+const mapStateToProps = (state) => ({
+	todos: state.todos,
+	currentUser: state.currentUser
+});
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({
-		todos: todos
-	}, dispatch);
-}
-
-export default connect(mapStateToProps, {
+const mapDispatchToProps = ({
 	fetchItems,
 	updateItem,
 	deleteItem,
 	addItem
-})(TodoList);
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TodoList);

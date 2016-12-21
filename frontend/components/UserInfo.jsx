@@ -20,8 +20,8 @@ export default class UserInfo extends Component {
 			}
 		}
 
-		const auth = this.props.auth;
-		const profile = auth.getProfile();
+		const { auth } = this.props;
+		const profile = auth.getPgProfile();
 
 		return (
 			<Menu.Item style={styles.menuItem}>
