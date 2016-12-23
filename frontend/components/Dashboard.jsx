@@ -7,19 +7,21 @@ export default class Dashboard extends Component {
 	render() {
 		return (
 			<Grid padded>
-				<Grid.Column mobile={16} tablet={8} computer={8}>
+				<Grid.Column mobile={16} tablet={16} computer={8}>
 					<div className="ui fluid card">
 						<div className="content">
 							<div className="header">My Todo List</div>
-							<TodoListContainer />
-							<AddTodoContainer />
+							<div className="description">
+								<TodoListContainer />
+								<AddTodoContainer />
+							</div>
 						</div>
 					</div>
 				</Grid.Column>
-				<Grid.Column mobile={16} tablet={8} computer={4}>
+				<Grid.Column mobile={16} tablet={16} computer={4}>
 					Something
 				</Grid.Column>
-				<Grid.Column mobile={16} tablet={8} computer={4}>
+				<Grid.Column mobile={16} tablet={16} computer={4}>
 					Something
 				</Grid.Column>
 			</Grid>

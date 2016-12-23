@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../redux/actions/todos';
 import AddTodo from '../components/TodoList/AddTodo';

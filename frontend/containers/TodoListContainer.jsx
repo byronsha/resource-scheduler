@@ -1,22 +1,11 @@
-import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import React from 'react';
 import { connect } from 'react-redux';
-import {
-	fetchTodos,
-	updateTodo,
-	deleteTodo
-} from '../redux/actions/todos';
+import { updateTodo, deleteTodo } from '../redux/actions/todos';
 import TodoList from '../components/TodoList/Todolist';
-// import TodoItem from '../components/todo_item'
-// import NewTodo from '../components/new_todo';
-
-export class TodoListContainer extends Component {
-	componentWillMount() {
-		this.props.fetchTodos();
-	}
-}
 
 const mapStateToProps = (state) => {
+	console.log('-- TEST FROM TODO LIST CONTAINER --')
+	console.log(state);
 	return {
 		todos: state.todos,
 		currentUser: state.currentUser
@@ -24,12 +13,13 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = ({
-	fetchTodos,
 	updateTodo,
 	deleteTodo
 });
 
-export default connect(
+const TodoListContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(TodoList);
+
+export default TodoListContainer;
