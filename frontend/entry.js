@@ -13,6 +13,9 @@ import AppHome from './components/AppHome';
 import Dashboard from './components/Dashboard';
 
 import reducers from './redux/reducers';
+import {
+	fetchTodos
+} from './redux/actions/todos';
 
 const logger = createLogger({collapsed: true});
 const createStoreWithMiddleware = applyMiddleware(promise, logger)(createStore);
@@ -27,7 +30,7 @@ const requireAuth = (nextState, replace) => {
 	}
 };
 
-ReactDOM.render((
+const Root = () => (
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path='/' component={AppHome} auth={auth}>
@@ -37,4 +40,12 @@ ReactDOM.render((
 			<Route path="/login" component={Login} auth={auth} />
 		</Router>
 	</Provider>
-), document.getElementById('app'));
+);
+
+document.addEventListener("DOMContentLoaded", () => {
+	ReactDOM.render(
+		<Root />,
+		document.getElementById('root')
+	);
+	store.dispatch(fetchTodos());
+});

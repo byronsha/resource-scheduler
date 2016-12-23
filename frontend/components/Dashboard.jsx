@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import TodoList from '../containers/todo_list';
+import TodoListContainer from '../containers/TodoListContainer';
+import AddTodoContainer from '../containers/AddTodoContainer';
 
 export default class Dashboard extends Component {
 	render() {
 		return (
 			<Grid padded>
-				<Grid.Column mobile={16} tablet={8} computer={4}>
-					<TodoList />
+				<Grid.Column mobile={16} tablet={8} computer={8}>
+					<div className="ui fluid card">
+						<div className="content">
+							<div className="header">My Todo List</div>
+							<TodoListContainer />
+							<AddTodoContainer />
+						</div>
+					</div>
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={8} computer={4}>
-					<TodoList />
+					Something
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={8} computer={4}>
-					<TodoList />
-				</Grid.Column>
-				<Grid.Column mobile={16} tablet={8} computer={4}>
-					Hello world!
+					Something
 				</Grid.Column>
 			</Grid>
 		);

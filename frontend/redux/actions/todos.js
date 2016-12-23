@@ -1,42 +1,47 @@
 import axios from 'axios';
 
-export const FETCH_ITEMS = 'FETCH_ITEMS';
-export const UPDATE_ITEM = 'UPDATE_ITEM';
-export const DELETE_ITEM = 'DELETE_ITEM';
-export const ADD_ITEM = 'ADD_ITEM'
+export const FETCH_TODOS = 'FETCH_TODOS';
+export const UPDATE_TODO = 'UPDATE_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
+export const ADD_TODO = 'ADD_TODO'
 
-export function fetchItems() {
+export function fetchTodos() {
 	const request = axios.get(`/todos/api/v1/todos`);
 
 	return {
-		type: FETCH_ITEMS,
+		type: FETCH_TODOS,
 		payload: request
 	};
 }
 
-export function updateItem(item) {
-	const request = axios.put(`/todos/api/v1/todos/${item.id}`, item);
+export function updateTodo(todo) {
+	const request = axios.put(`/todos/api/v1/todos/${todo.id}`, todo);
 
 	return {
-		type: UPDATE_ITEM,
+		type: UPDATE_TODO,
 		payload: request
 	};
 }
 
-export function deleteItem(itemId) {
-	const request = axios.delete(`/todos/api/v1/todos/${itemId}`);
+export function deleteTodo(todoId) {
+	const request = axios.delete(`/todos/api/v1/todos/${todoId}`);
 
 	return {
-		type: DELETE_ITEM,
+		type: DELETE_TODO,
 		payload: request
 	};
 }
 
-export function addItem(todo) {
+export function addTodo() {
+	const todo = {
+		text: '',
+		complete: false
+	};
+
 	const request = axios.post(`/todos/api/v1/todos`, todo);
 
 	return {
-		type: ADD_ITEM,
+		type: ADD_TODO,
 		payload: request
 	};
 }
