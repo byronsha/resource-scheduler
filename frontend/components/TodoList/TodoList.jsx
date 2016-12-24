@@ -15,8 +15,8 @@ const TodoList = ({ todos, currentUser, updateTodo, deleteTodo }) => (
       {todos.map(todo =>
         <TodoItem
           key={todo.id}
-          {...todo}
-          onChange={() => updateTodo(todo)}
+          todo={todo}
+          updateTodo={updateTodo}
           deleteTodo={() => deleteTodo(todo.id)}
         />
       )}

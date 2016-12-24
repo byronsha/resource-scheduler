@@ -1,27 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const TodoItem = ({ onChange, deleteTodo, text, complete }) => {
-  if (complete) {
+class TodoItem extends Component {
+  render() {
+    const { updateTodo, deleteTodo, todo } = this.props;
+
+    if (todo.complete) {
+      return (
+        <tr>
+          <td>
+            <div className="ui input">
+              <input type="text" onChange={(e) => { updateTodo(e, todo) }} value={todo.text}></input>
+            </div>
+          </td>
+          <td>done!</td>
+          <td className="right aligned">
+            <button onClick={deleteTodo} className="ui red button">DELETE</button>
+          </td>
+        </tr>
+      )
+    }
+
     return (
       <tr>
-        <td>{text}</td>
-        <td>done!</td>
+        <td>
+          <div className="ui input">
+            <input type="text" onChange={(e) => { updateTodo(e, todo) }} value={todo.text}></input>
+          </div>
+        </td>
+        <td>not done!</td>
         <td className="right aligned">
-          <button onClick={deleteTodo} className="ui mini red button">DELETE</button>
+          <button onClick={deleteTodo} className="ui red button">DELETE</button>
         </td>
       </tr>
     )
   }
-
-  return (
-    <tr>
-      <td>{text}</td>
-      <td>not done!</td>
-      <td className="right aligned">
-        <button onClick={deleteTodo} className="ui mini red button">DELETE</button>
-      </td>
-    </tr>
-  )
 }
 
 export default TodoItem;

@@ -14,7 +14,9 @@ export function fetchTodos() {
 	};
 }
 
-export function updateTodo(todo) {
+export function updateTodo(e, todo) {
+	todo.text = e.target.value;
+	
 	const request = axios.put(`/todos/api/v1/todos/${todo.id}`, todo);
 
 	return {
