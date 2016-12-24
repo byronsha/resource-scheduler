@@ -3,25 +3,16 @@ import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
 
 const TodoList = ({ todos, currentUser, updateTodo, deleteTodo }) => (
-  <table className="ui compact structured table">
-    <thead>
-      <tr>
-        <th>Task</th>
-        <th>Complete</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {todos.map(todo =>
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          updateTodo={updateTodo}
-          deleteTodo={() => deleteTodo(todo.id)}
-        />
-      )}
-    </tbody>
-  </table>
+  <tbody>
+    {todos.map(todo =>
+      <TodoItem
+        key={todo.id}
+        todo={todo}
+        updateTodo={updateTodo}
+        deleteTodo={() => deleteTodo(todo.id)}
+      />
+    )}
+  </tbody>
 )
 
 TodoList.propTypes = {

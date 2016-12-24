@@ -8,17 +8,17 @@ class Dashboard extends Component {
 		return (
 			<Grid padded>
 				<Grid.Column mobile={16} tablet={16} computer={6}>
-					<div className="ui fluid card">
-						<div className="content">
-							<div className="header">My Todo List</div>
-						</div>
-						<div className="content">
-							<TodoListContainer />
-						</div>
-						<div className="extra content">							
-							<AddTodoContainer />
-						</div>
-					</div>
+					<table className="ui table">
+				    <thead>
+				      <tr>
+								<th colSpan="3">
+									<h3><i className="tasks icon"></i> Todo List</h3>
+								</th>
+				      </tr>
+				    </thead>
+						<TodoListContainer />
+						<AddTodoContainer />
+					</table>
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={16} computer={6}>
 					Something

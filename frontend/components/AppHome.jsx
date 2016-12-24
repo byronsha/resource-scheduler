@@ -17,6 +17,7 @@ export default class AppHome extends Component {
 			marginLeft: '250px',
 			width: 'calc(100vw - 250px)',
 			maxHeight: '100vh',
+			height: '100vh',
 			overflowY: 'auto'
 		}
 
