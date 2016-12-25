@@ -12,9 +12,10 @@ class TodoItem extends Component {
           </div>
         </td>
         <td className="right aligned collapsing">
-          {!todo.complete && <i className='icon warning'></i>}
-          {todo.complete && <i className='icon checkmark'></i>}
-          {todo.complete ? "Done!" : "Todo!"}
+          <div className="ui slider checkbox">
+            <input type="checkbox" name="complete" checked={todo.complete}></input>
+            <label>Done</label>
+          </div>
         </td>
         <td className="right aligned collapsing">
           <i onClick={deleteTodo} className="close icon large black"></i>

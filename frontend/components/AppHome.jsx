@@ -13,6 +13,7 @@ export default class AppHome extends Component {
 		}
 
 		const contentWrapperStyle = {
+			background: '#eee',
 			position: 'absolute',
 			marginLeft: '250px',
 			width: 'calc(100vw - 250px)',

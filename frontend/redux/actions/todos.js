@@ -16,7 +16,7 @@ export function fetchTodos() {
 
 export function updateTodo(e, todo) {
 	todo.text = e.target.value;
-	
+
 	const request = axios.put(`/todos/api/v1/todos/${todo.id}`, todo);
 
 	return {
@@ -34,12 +34,7 @@ export function deleteTodo(todoId) {
 	};
 }
 
-export function addTodo() {
-	const todo = {
-		text: '',
-		complete: false
-	};
-
+export function addTodo(todo) {
 	const request = axios.post(`/todos/api/v1/todos`, todo);
 
 	return {
